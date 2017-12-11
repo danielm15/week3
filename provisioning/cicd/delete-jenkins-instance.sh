@@ -12,7 +12,7 @@ if [ -e "./ec2_instance/instance-id.txt" ]; then
     aws ec2 terminate-instances --instance-ids ${INSTANCE_ID}
 
     echo Waiting for instance to terminate....
-    aws ec2 wait --region eu-west-1 instance-terminated --instance-ids ${INSTANCE_ID}
+    aws ec2 wait --region eu-west-2 instance-terminated --instance-ids ${INSTANCE_ID}
     echo Instance ${INSTANCE_ID} terminated
 
     rm ./ec2_instance/instance-id.txt

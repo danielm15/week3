@@ -22,9 +22,9 @@ fi
 
 
 if [ ! -e ~/aws/instance-id.txt ]; then
-    echo "Creating jenkins instance ami-1a962263 hgop2017-students ${THISDIR}/bootstrap-jenkins.sh ${PEM_NAME}"
+    echo "Creating jenkins instance ami-e7d6c983 hgop2017-students ${THISDIR}/bootstrap-jenkins.sh ${PEM_NAME}"
 
-    create-ec2-instance ami-1a962263 ${SECURITY_GROUP_ID} ${THISDIR}/bootstrap-jenkins.sh ${PEM_NAME}
+    create-ec2-instance ami-e7d6c983 ${SECURITY_GROUP_ID} ${THISDIR}/bootstrap-jenkins.sh ${PEM_NAME}
 else
     echo "Instance already exists, nothing to do"
 fi

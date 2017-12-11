@@ -46,7 +46,7 @@ cd build
 
 echo Building docker image
 
-docker build -t ironpeak/tictactoe:$GIT_COMMIT .
+docker build -t danielm15/week3:$GIT_COMMIT .
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -54,7 +54,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-docker push ironpeak/tictactoe:$GIT_COMMIT
+docker push danielm15/week3:$GIT_COMMIT
 rc=$?
 if [[ $rc != 0 ]] ; then
    echo "Docker push failed " $rc

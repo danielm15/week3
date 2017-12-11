@@ -5,7 +5,7 @@ services:
       - 'POSTGRES_HOST=postgres'
       - 'POSTGRES_PORT=5432'
       - 'PORT=8080'
-    image: 'ironpeak/tictactoe:${GIT_COMMIT}'
+    image: 'danielm15/week3:${GIT_COMMIT}'
     ports:
       - '8080:8080'
     links:
