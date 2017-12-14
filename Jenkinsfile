@@ -16,10 +16,12 @@ node {
         sh 'npm run test:nowatch'
     }
     stage('Deploy') {
-        sh './dockerbuild.sh'
-        dir('./provisioning')
-        {
-            sh "./provision-new-environment.sh"
-        }
+	withAWS(profile:'default') {
+		sh './dockerbuild.sh'
+		dir('./provisioning')
+		{
+		    sh "./provision-new-environment.sh"
+		}
+	}
     }
 }
