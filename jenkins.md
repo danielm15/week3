@@ -19,4 +19,3 @@ To use the Github plug-in with Jenkins:
     - cat .ssh/id_rsa.pub
     
 Then copy the public key that was concatenated onto the screen, and add it to your Github ssh keys.
-
