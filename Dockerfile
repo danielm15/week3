@@ -4,8 +4,8 @@ RUN apt-get update
 RUN apt-get install telnet
 RUN apt-get install -y sudo
 RUN rm -rf /var/lib/apt/lists/*
-RUN sudo -su jenkins
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
+RUN sudo -su jenkins
 COPY package.json .
 RUN npm install --silent
 COPY . .
