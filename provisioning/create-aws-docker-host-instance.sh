@@ -10,10 +10,20 @@ export AMI_IMAGE_ID="ami-e7d6c983"
 echo No instance information present, continuing.
 [ -d ${INSTANCE_DIR} ] || mkdir ${INSTANCE_DIR}
 
-#USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
+ACCESS_KEY_ID=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep AccessKeyId | sed -n 's/.*"AccessKeyId" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-key.txt)
 
-#SECURITY_GROUP_NAME=hgop-${USERNAME}
-SECURITY_GROUP_NAME=hgop-Administrator
+SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep SecretAccessKey | sed -n 's/.*"SecretAccessKey" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/secret-access-key.txt)
+
+ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
+
+export AWS_ACCESS_KEY_ID = ${ACCESS_KEY_ID}
+export AWS_SECRET_ACCESS_KEY = ${SECRET_ACCESS_KEY}
+export AWS_SESSION_TOKEN = ${ACCESS_TOKEN}
+
+USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
+
+SECURITY_GROUP_NAME=hgop-${USERNAME}
+#SECURITY_GROUP_NAME=hgop-Administrator
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
 
