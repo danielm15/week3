@@ -32,7 +32,7 @@
     "startclient": "cd ./client && npm run start",
     "buildclient": "cd ./client && npm run build",
     "clean": "if [ -d ./build ]; then rm -r ./build; fi",
-    "startserver": "export NODE_PATH=. && npm run migratedb && nodemon run.js",
+    "startserver": "export NODE_PATH=. && npm run migratedb:dev && nodemon run.js",
     "createbuild": "[ -d build ] || mkdir build ",
     "build": "export NODE_PATH=. && npm run clean && npm run createbuild && npm run buildclient && mv client/build build/static && cp -R server build/server && mkdir -p build/client/src && cp -r client/src/common build/client/src && cp run.js build && cp runserver.sh build",
     "test:watch": "export NODE_PATH=. && nodemon ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine.json",

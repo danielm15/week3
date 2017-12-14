@@ -118,7 +118,7 @@ export default function (injected) {
             }
         }
 
-        static createGame() {
+        createGame() {
             let cmdId = generateUUID();
             commandPort.routeMessage({
                 commandId: cmdId,
@@ -127,7 +127,7 @@ export default function (injected) {
             });
         }
 
-        static leaveGame() {
+        leaveGame() {
             let cmdId = generateUUID();
             commandPort.routeMessage({
                 commandId: cmdId,
