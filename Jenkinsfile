@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 node {    
     checkout scm
     stage('Clean') {
@@ -19,8 +21,8 @@ node {
         sh './dockerbuild.sh'
         dir('./provisioning')
         {
-	    sh "export AWS_ACCESS_KEY_ID=AKIAIMUGE2AGDFLSIGPA"
-	    sh "export AWS_SECRET_ACCESS_KEY=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"
+	    sh "export AWS_ACCESS_KEY_ID=AKIAJ624P4SDIHE265ZA"
+	    sh "export AWS_SECRET_ACCESS_KEY=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"
 	    sh "export AWS_DEFAULT_REGION=eu-west-2"
             sh "./provision-new-environment.sh"
         }
