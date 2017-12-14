@@ -17,11 +17,12 @@ node {
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
-        withEnv(['AWS_PROFILE=~/.aws/config']) {
-                dir('./provisioning')
-                {
-                    sh "./provision-new-environment.sh"
-                }
+        dir('./provisioning')
+        {
+	    sh "export AWS_ACCESS_KEY_ID=AKIAIMUGE2AGDFLSIGPA"
+	    sh "export AWS_SECRET_ACCESS_KEY=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"
+	    sh "export AWS_DEFAULT_REGION=eu-west-2"
+            sh "./provision-new-environment.sh"
         }
     }
 }
