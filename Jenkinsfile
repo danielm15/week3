@@ -17,12 +17,13 @@ node {
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
-        dir('./provisioning')
-        {
-	    sh "export AWS_ACCESS_KEY_ID=AKIAJUKYXDGI5TA5LUMA"
-	    sh "export AWS_SECRET_ACCESS_KEY=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"
-	    sh "export AWS_DEFAULT_REGION=eu-west-2"
-            sh "./provision-new-environment.sh"
-        }
+	withEnv(['AWS_ACCESS_KEY_ID=AKIAJIM6NF2RUXXGDYYA',
+		 'AWS_SECRET_ACCESS_KEY=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',
+		 'AWS_DEFAULT_REGION=eu-west-2']) {
+	    dir('./provisioning')
+            {
+                sh "./provision-new-environment.sh"
+            }
+	}
     }
 }
