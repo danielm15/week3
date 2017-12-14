@@ -62,7 +62,8 @@ aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --p
 set -e
 
 set +e
-scp -o StrictHostKeyChecking=no -i "~/aws/${PEM_NAME}.pem" ec2-user@$(cat ~/aws/instance-public-name.txt):/var/log/cloud-init-output.log ~/aws/cloud-init-output.log
-scp -o StrictHostKeyChecking=no -i "~/aws/${PEM_NAME}.pem" ec2-user@$(cat ~/aws/instance-public-name.txt):/var/log/user-data.log ~/aws/user-data.log
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@$(cat ~/aws/instance-public-name.txt):/var/log/cloud-init-output.log ~/aws/cloud-init-output.log
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@$(cat ~/aws/instance-public-name.txt):/var/log/user-data.log ~/aws/user-data.log
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ../../Jenkinsfile ec2-user@$(cat ~/aws/instance-public-name.txt):~/Jenkinsfile
 
 aws ec2 associate-iam-instance-profile --instance-id $(cat ~/aws/instance-id.txt) --iam-instance-profile Name=CICDServer-Instance-Profile
