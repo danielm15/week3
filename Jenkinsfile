@@ -19,8 +19,8 @@ node {
         sh './dockerbuild.sh'
         dir('./provisioning')
         {
-	    sh "export AWS_ACCESS_KEY_ID=AKIAJ624P4SDIHE265ZA"
-	    sh "export AWS_SECRET_ACCESS_KEY=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"
+	    sh "export AWS_ACCESS_KEY_ID=AKIAJUKYXDGI5TA5LUMA"
+	    sh "export AWS_SECRET_ACCESS_KEY=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"
 	    sh "export AWS_DEFAULT_REGION=eu-west-2"
             sh "./provision-new-environment.sh"
         }
