@@ -18,8 +18,8 @@ ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credent
 
 aws configure set aws_access_key_id ${ACCESS_KEY_ID} --profile default
 aws configure set aws_secret_access_key ${SECRET_ACCESS_KEY} --profile default
-aws configure set aws_session_token ${ACCESS_TOKEN} --profile default
-aws configure set default.region eu-west-2 --profile default
+#aws configure set aws_session_token ${ACCESS_TOKEN} --profile default
+aws configure set region eu-west-2 --profile default
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
