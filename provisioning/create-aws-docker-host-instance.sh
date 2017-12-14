@@ -16,6 +16,7 @@ SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-cr
 
 ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
 
+sudo -su jenkins
 aws configure set 'aws_access_key_id' '${ACCESS_KEY_ID}' --profile default
 aws configure set 'aws_secret_access_key' '${SECRET_ACCESS_KEY}' --profile default
 #aws configure set aws_session_token ${ACCESS_TOKEN} --profile default
