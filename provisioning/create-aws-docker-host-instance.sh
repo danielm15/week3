@@ -16,9 +16,9 @@ SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-cr
 
 ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
 
-export AWS_ACCESS_KEY_ID = ${ACCESS_KEY_ID}
-export AWS_SECRET_ACCESS_KEY = ${SECRET_ACCESS_KEY}
-export AWS_SESSION_TOKEN = ${ACCESS_TOKEN}
+export AWS_ACCESS_KEY_ID=${ACCESS_KEY_ID}
+export AWS_SECRET_ACCESS_KEY=${SECRET_ACCESS_KEY}
+export AWS_SESSION_TOKEN=${ACCESS_TOKEN}
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
