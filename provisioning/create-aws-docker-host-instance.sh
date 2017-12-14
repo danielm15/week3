@@ -1,7 +1,5 @@
 #!/bin/bash
 
-THISDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 set -e
 
 echo "Check for instance information..."
@@ -12,15 +10,10 @@ export AMI_IMAGE_ID="ami-e7d6c983"
 echo No instance information present, continuing.
 [ -d ${INSTANCE_DIR} ] || mkdir ${INSTANCE_DIR}
 
-echo Updating AWS credentials
-[ -d ~/.aws ] || mkdir ~/.aws
+#USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
-cp ${THISDIR}/config ~/.aws/config
-cp ${THISDIR}/credentials ~/.aws/credentials 
-
-USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
-
-SECURITY_GROUP_NAME=hgop-${USERNAME}
+#SECURITY_GROUP_NAME=hgop-${USERNAME}
+SECURITY_GROUP_NAME=hgop-Administrator
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
 
