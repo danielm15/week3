@@ -17,8 +17,8 @@ node {
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
-	withEnv(['AWS_ACCESS_KEY_ID=AKIAJIM6NF2RUXXGDYYA',
-		 'AWS_SECRET_ACCESS_KEY=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',
+	withEnv(['AWS_ACCESS_KEY_ID=AKIAJ4G76Q7E4J6MEH5A',
+		 'AWS_SECRET_ACCESS_KEY=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',
 		 'AWS_DEFAULT_REGION=eu-west-2']) {
 	    dir('./provisioning')
             {
