@@ -16,10 +16,10 @@ node {
         sh 'npm run test:nowatch'
     }
     stage('Deploy') {
-	sh './dockerbuild.sh'
-	dir('./provisioning')
-	{
-		sh "./provision-new-environment.sh"
-	}
+        sh './dockerbuild.sh'
+        dir('./provisioning')
+        {
+            sh "./provision-new-environment.sh"
+        }
     }
 }
