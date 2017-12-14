@@ -46,6 +46,7 @@ cd build
 
 echo Building docker image
 
+docker login --username danielm15 --password Loft3123
 docker build -t danielm15/week3:$GIT_COMMIT .
 
 rc=$?
