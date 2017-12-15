@@ -14,6 +14,7 @@
     "express": "^4.10.4",
     "express-session": "^1.9.2",
     "jade": "^1.7.0",
+    "jasmine-reporters": "^2.2.1",
     "javascript-brunch": ">=1.7.1",
     "jshint-brunch": "^1.7.0",
     "lodash": "^4.17.4",
@@ -25,6 +26,7 @@
     "expect.js": "^0.3.1",
     "jasmine": "^2.5.2",
     "jasmine-console-reporter": "^1.2.7",
+    "jasmine-reporters": "^2.2.1",
     "should": "^11.1.1",
     "socket.io-client": "^1.6.0"
   },
@@ -40,7 +42,7 @@
     "apitest": "export NODE_PATH=. && nodemon ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-apitest.json",
     "loadtest": "export NODE_PATH=. && nodemon ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-loadtest.json",
     "migratedb:dev": "db-migrate -e dev --config ./server/database.json --migrations-dir ./server/migrations up",
-    "migratedb:prod": "db-migrate -e prod --config ./server/database.json --migrations-dir ./server/migrations up",    
+    "migratedb:prod": "db-migrate -e prod --config ./server/database.json --migrations-dir ./server/migrations up",
     "startpostgres": "docker run -p 5432:5432 --name pg2 -e POSTGRES_PASSWORD=mysecretpassword -d postgres 2>/dev/null || docker start pg2 && docker ps | grep pg2",
     "connectdockerdb": "docker run -it --rm --link pg2:postgres postgres psql -h postgres -U postgres"
   }

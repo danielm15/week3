@@ -14,6 +14,8 @@ node {
     }
     stage('Test') {
         sh 'npm run test:nowatch'
+	
+	junit '**/docs/*.xml'
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
