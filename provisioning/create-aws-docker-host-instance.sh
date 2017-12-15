@@ -16,6 +16,10 @@ SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-cr
 
 ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
 
+INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id 2>&1) > ${INSTANCE_DIR}/instance-id.txt
+
+aws ec2 associate-iam-instance-profile --instance-id ${INSTANCE_ID} --iam-instance-profile Name=CICDServer-Instance-Profile
+
 aws configure set aws_access_key_id $(cat ${INSTANCE_DIR}/access-key.txt) --profile default
 aws configure set aws_secret_access_key $(cat ${INSTANCE_DIR}/secret-access-key.txt) --profile default
 aws configure set aws_session_token $(cat ${INSTANCE_DIR}/access-token.txt) --profile default
