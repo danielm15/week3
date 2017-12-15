@@ -42,6 +42,8 @@
     "test:nowatch": "export NODE_PATH=. && ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine.json",
     "apitest": "export NODE_PATH=. && nodemon ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-apitest.json",
     "loadtest": "export NODE_PATH=. && nodemon ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-loadtest.json",
+    "apitest:nowatch": "export NODE_PATH=. && ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-apitest.json",
+    "loadtest:nowatch": "export NODE_PATH=. && ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./jasmine-loadtest.json",
     "migratedb:dev": "db-migrate -e dev --config ./server/database.json --migrations-dir ./server/migrations up",
     "migratedb:prod": "db-migrate -e prod --config ./server/database.json --migrations-dir ./server/migrations up",
     "startpostgres": "docker run -p 5432:5432 --name pg2 -e POSTGRES_PASSWORD=mysecretpassword -d postgres 2>/dev/null || docker start pg2 && docker ps | grep pg2",

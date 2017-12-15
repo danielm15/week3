@@ -19,9 +19,7 @@ node {
 	    sh 'npm run test:nowatch'
 	}
 	sh 'npm run startpostgres'
-	sh 'npm run startserver:ci'
-	sh 'npm run apitest'
-	// sh 'npm run loadtest'
+	sh 'npm run startserver:ci && npm run apitest:nowatch && npm run loadtest:nowatch && sleep 10 && kill $!'
 	
 	junit '**/docs/*.xml'
     }
