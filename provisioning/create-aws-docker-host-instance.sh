@@ -29,6 +29,7 @@ aws configure set aws_session_token $(cat ${INSTANCE_DIR}/access-token.txt) --pr
 aws configure set region eu-west-1 --profile default
 
 #USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
+
 USERNAME='danielm15@ru.is'
 
 SECURITY_GROUP_NAME=docker-${USERNAME}
@@ -82,6 +83,7 @@ aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --p
 aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_CIDR}
 aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_CIDR}
 aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 8080 --cidr 0.0.0.0/0
 
 aws ec2 associate-iam-instance-profile --instance-id $(cat ~/aws/instance-id.txt) --iam-instance-profile Name=CICDServer-Instance-Profile
 
