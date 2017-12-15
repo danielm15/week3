@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="User chat API" timestamp="2017-12-15T15:16:20" hostname="localhost" time="0.165" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="User chat API" name="should get user session information on connect" time="0.111" />
+  <testcase classname="User chat API" name="should receive chat message back after sending chat command" time="0.052" />
+ </testsuite>
+</testsuites>

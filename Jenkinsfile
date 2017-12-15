@@ -14,6 +14,14 @@ node {
     }
     stage('Test') {
         sh 'npm run test:nowatch'
+	dir('client')
+	{
+	    sh 'npm run test:nowatch'
+	}
+	sh 'npm run startpostgres'
+	sh 'npm run startserver:ci'
+	sh 'npm run apitest'
+	// sh 'npm run loadtest'
 	
 	junit '**/docs/*.xml'
     }

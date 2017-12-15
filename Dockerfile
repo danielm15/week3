@@ -8,6 +8,6 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 COPY package.json .
 RUN npm install --silent
 COPY . .
-EXPOSE 8080
+EXPOSE 8008
 ENV NODE_PATH /server/
 CMD ["./runserver.sh"]
