@@ -67,3 +67,4 @@ scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@$
 scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ../../Jenkinsfile ec2-user@$(cat ~/aws/instance-public-name.txt):~/Jenkinsfile
 
 aws ec2 associate-iam-instance-profile --instance-id $(cat ~/aws/instance-id.txt) --iam-instance-profile Name=CICDServer-Instance-Profile
+
