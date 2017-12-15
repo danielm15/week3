@@ -18,6 +18,8 @@ ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credent
 
 INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id 2>&1) > ${INSTANCE_DIR}/instance-id.txt
 
+echo ${INSTANCE_ID}
+
 aws ec2 associate-iam-instance-profile --instance-id ${INSTANCE_ID} --iam-instance-profile Name=CICDServer-Instance-Profile
 
 aws configure set aws_access_key_id $(cat ${INSTANCE_DIR}/access-key.txt) --profile default
