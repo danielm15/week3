@@ -15,12 +15,10 @@ ACCESS_KEY_ID=$(curl http://169.254.169.254/latest/meta-data/iam/security-creden
 SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep SecretAccessKey | sed -n 's/.*"SecretAccessKey" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/secret-access-key.txt)
 
 ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
-gi
 
 curl http://169.254.169.254/latest/meta-data/instance-id) > ${INSTANCE_DIR}/instance-id.txt
 
 INSTANCE_ID=$(cat ${INSTANCE_DIR}/instance-id.txt)
-
 echo ${INSTANCE_ID}
 
 #aws ec2 associate-iam-instance-profile --instance-id ${INSTANCE_ID} --iam-instance-profile Name=CICDServer-Instance-Profile
