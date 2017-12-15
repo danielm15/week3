@@ -30,7 +30,8 @@ aws configure set region eu-west-1 --profile default
 
 #USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 USERNAME='danielm15@ru.is'
-SECURITY_GROUP_NAME=hgop-${USERNAME}
+
+SECURITY_GROUP_NAME=docker-${USERNAME}
 #SECURITY_GROUP_NAME=hgop-Administrator
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
