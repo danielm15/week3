@@ -28,8 +28,8 @@ aws configure set aws_secret_access_key $(cat ${INSTANCE_DIR}/secret-access-key.
 aws configure set aws_session_token $(cat ${INSTANCE_DIR}/access-token.txt) --profile default
 aws configure set region eu-west-1 --profile default
 
-USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
-
+#USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
+USERNAME='danielm15@ru.is'
 SECURITY_GROUP_NAME=hgop-${USERNAME}
 #SECURITY_GROUP_NAME=hgop-Administrator
 
