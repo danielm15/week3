@@ -14,13 +14,13 @@ node {
     }
     stage('Test') {
         sh 'npm run test:nowatch'
-	sh 'npm run startpostgres'
-	sh 'npm run startserver:ci && npm run apitest:nowatch && npm run sleep 10 && kill $!'
+	// sh 'npm run startpostgres'
+	// sh 'npm run startserver:ci && npm run apitest:nowatch && npm run sleep 10 && kill $!'
 	dir('client')
 	{
 	    sh 'npm run test:nowatch'
 	}
-	// loadtest:nowatch &&
+	
 	junit '**/docs/*.xml'
     }
     stage('Deploy') {
