@@ -5,21 +5,21 @@ set -e
 echo "Check for instance information..."
 INSTANCE_DIR=~/aws
 
-export AMI_IMAGE_ID="ami-e7d6c983"
+export AMI_IMAGE_ID="ami-1a962263"
 
 echo No instance information present, continuing.
 [ -d ${INSTANCE_DIR} ] || mkdir ${INSTANCE_DIR}
 
-ACCESS_KEY_ID=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep AccessKeyId | sed -n 's/.*"AccessKeyId" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-key.txt)
+ACCESS_KEY_ID=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep AccessKeyId | sed -n 's/.*"AccessKeyId" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-key.txt)
 
-SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep SecretAccessKey | sed -n 's/.*"SecretAccessKey" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/secret-access-key.txt)
+SECRET_ACCESS_KEY=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep SecretAccessKey | sed -n 's/.*"SecretAccessKey" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/secret-access-key.txt)
 
-ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/StudentCICDServer 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
+ACCESS_TOKEN=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/cicd 2>&1 | grep Token | sed -n 's/.*"Token" : "\(.*\)",/\1/p' > ${INSTANCE_DIR}/access-token.txt)
 
 aws configure set 'aws_access_key_id' '${ACCESS_KEY_ID}' --profile default
 aws configure set 'aws_secret_access_key' '${SECRET_ACCESS_KEY}' --profile default
-#aws configure set aws_session_token ${ACCESS_TOKEN} --profile default
-aws configure set 'region' 'eu-west-2' --profile default
+aws configure set aws_session_token ${ACCESS_TOKEN} --profile default
+aws configure set 'region' 'eu-west-1' --profile default
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
@@ -53,8 +53,8 @@ if [ ! -e ~/aws/instance-id.txt ]; then
     echo ${INSTANCE_ID} > ~/aws/instance-id.txt
 
     echo Waiting for instance to be running
-    echo aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
-    aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
+    echo aws ec2 wait --region eu-west-1 instance-running --instance-ids ${INSTANCE_ID}
+    aws ec2 wait --region eu-west-1	 instance-running --instance-ids ${INSTANCE_ID}
     echo EC2 instance ${INSTANCE_ID} ready and available on ${INSTANCE_PUBLIC_NAME}
 fi
 

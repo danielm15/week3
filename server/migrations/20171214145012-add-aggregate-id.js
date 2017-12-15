@@ -15,11 +15,14 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, callback) {
-  db.addColumn('eventlog', 'aggregate_id', { type: 'int' }, callback);
+  return db.addColumn('eventlog', 'aggregate_id', {
+    type: 'int',
+    unsigned: true
+  }, callback);
 };
 
 exports.down = function(db) {
-  db.removeColumn('eventlog', 'aggregate_id', callback);
+  return db.removeColumn('eventlog', 'aggregate_id');
 };
 
 exports._meta = {
