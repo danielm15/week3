@@ -16,10 +16,10 @@ node {
         sh 'npm run test:nowatch'
 	// sh 'npm run startpostgres'
 	// sh 'npm run startserver:ci && npm run apitest:nowatch && npm run sleep 10 && kill $!'
-	dir('client')
-	{
-	    sh 'npm run test:nowatch'
-	}
+	// dir('client')
+	// {
+	//    sh 'npm run test:nowatch'
+	// }
 	
 	junit '**/docs/*.xml'
     }
