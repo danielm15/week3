@@ -24,17 +24,17 @@ echo SCP
 
 #echo Status ${status}
 
-sudo scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./ec2-instance-check.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/ec2-instance-check.sh
-sudo scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./docker-compose.yaml ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose.yaml
-sudo scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./docker-compose-and-run.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose-and-run.sh
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./ec2-instance-check.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/ec2-instance-check.sh
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./docker-compose.yaml ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose.yaml
+scp -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ./docker-compose-and-run.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose-and-run.sh
 
 echo Wait for instance to be ready
-sudo ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/ec2-instance-check.sh"
+ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/ec2-instance-check.sh"
 
 echo Instance ready...going to run this:
-sudo ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/docker-compose-and-run.sh"
+ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/docker-compose-and-run.sh"
 
 echo Running script
-sudo ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "~/docker-compose-and-run.sh ${GIT_COMMIT}"
+ssh -o StrictHostKeyChecking=no -i "~/aws/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "~/docker-compose-and-run.sh ${GIT_COMMIT}"
 
 echo Done updating environment
