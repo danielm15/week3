@@ -2,7 +2,7 @@ node {
     checkout scm
     stage('Clean') {
         // Clean files from last build.
-        sh 'sudo git clean -dfxq'
+        sh 'git clean -dfxq'
     }
     stage('Setup') {
         // Prefer yarn over npm.
