@@ -6,7 +6,7 @@ import webSocketModule from './webSocket';
 describe("webSocket", function () {
 
     let socket;
-    let socketURI = 'http://localhost:8008/';
+    let socketURI = 'http://localhost:8080/';
     let io;
 
     beforeEach(function () {

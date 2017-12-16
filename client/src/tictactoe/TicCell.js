@@ -10,11 +10,8 @@ export default function (injected) {
             super();
             this.state = {
                 move:{
-                    xy: {
-                        x: 0,
-                        y: 0
-                    },
-                    side: 'X'
+                    xy: {},
+                    side: ""
                 }
             }
         }
@@ -22,13 +19,13 @@ export default function (injected) {
             this.unsubscribe = eventRouter.on('MovePlaced', (moveEvent)=>{
             //    Key logic goes here. Remember---the cell gets all move events, not only its own.
                 this.setState({
+                    commandId: moveEvent.commandId,
+                    type: moveEvent.type,
+                    gameId: moveEvent.gameId,
                     move: {
-                        xy: {
-                            x: moveEvent.xy.x,
-                            y: moveEvent.xy.y
-                        }
-                    },
-                    side: moveEvent.mySide
+                        xy: moveEvent.xy,
+                        side: moveEvent.side
+                    }
                 });
             })
         }
