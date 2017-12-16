@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Tictactoe command handler" timestamp="2017-12-15T15:13:32" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Tictactoe command handler" name="should cache object" time="0.001" />
-  <testcase classname="Tictactoe command handler" name="should evict first object when another is added" time="0" />
+ <testsuite name="Tictactoe command handler" timestamp="2017-12-16T09:25:06" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Tictactoe command handler" name="should cache object" time="0" />
+  <testcase classname="Tictactoe command handler" name="should evict first object when another is added" time="0.001" />
  </testsuite>
 </testsuites>
