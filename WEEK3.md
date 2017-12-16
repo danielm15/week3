@@ -9,6 +9,7 @@
 that uses the SQL API function addColumn to add the column aggregate_id to the event log db
   * [ x ] On Git push Jenkins pulls my code and the Tic Tac Toe application is deployed through a build pipeline, but only if all my tests are successful
     * Builds sometimes fail due to memory problems but otherwise work fine.
+    * npm sometime fails to install due to a problem with the uglify-js package, not sure how to fix it permanently but a termporary fix is to reboot the instance.
   * [ ] Filled out the `Assignments:` for the API and Load tests
     * TODO: Where are the comments found
   * [ x] The API and Load test run in my build pipeline on Jenkins and everything is cleaned up afterwards
