@@ -29,9 +29,6 @@ node {
         {
             sh "./provision-new-environment.sh"
         }
-    }
-    stage('Clean') {
-	// Clean build files, docker containers, and docker images.
-        sh 'npm run clean && npm run clean:docker'
+	sh 'npm run clean && npm run clean:docker'
     }
 }
