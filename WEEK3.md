@@ -16,8 +16,8 @@ that uses the SQL API function addColumn to add the column aggregate_id to the e
     * Load tests not working yet
   * [ x ] My test reports are published in Jenkins
     * TODO: If something is not working, list it.
-  * [ ] My Tic Tac Toe game works, two people can play a game till the end and be notified who won.
-    * TODO: If something is not working, list it.
+  * [ x ] My Tic Tac Toe game works, two people can play a game till the end and be notified who won.
+    * Doesn't show visuals for the state of the game but if the logic is correct and displays the correct messages
   * [ ] My TicCell is tested
     * 
   * [ x ] I've set up Datadog
