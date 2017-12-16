@@ -34,6 +34,7 @@
     "startclient": "cd ./client && npm run start",
     "buildclient": "cd ./client && npm run build",
     "clean": "if [ -d ./build ]; then rm -r ./build; fi",
+    "clean:docker": "docker container stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi --force $(docker images -a -q)",
     "startserver": "export NODE_PATH=. && npm run migratedb:dev && nodemon run.js",
     "startserver:ci": "export NODE_PATH=. && npm run migratedb:dev && forever start run.js",
     "createbuild": "[ -d build ] || mkdir build ",
